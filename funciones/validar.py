@@ -1,5 +1,5 @@
 def validar_procesos(procesos):
-    
+    #excepciones
     for proceso in procesos:
         if "id" not in proceso or "llegada" not in proceso or "duracion" not in proceso:
             raise ValueError(f"El proceso {proceso.get('id', 'desconocido')} tiene datos incompletos.")

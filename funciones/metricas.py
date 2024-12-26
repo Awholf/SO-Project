@@ -1,4 +1,5 @@
 def calcular_metricas(planificacion, procesos):
+    #calcula promedios
     tiempos_retorno = []
     tiempos_espera = []
     tiempos_respuesta = []
