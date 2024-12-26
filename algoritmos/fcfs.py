@@ -1,6 +1,5 @@
 def algoritmo_fcfs(procesos):
-    #https://gist.github.com/fitorec/57344289af3d2da8a7a255f2448d26b1
-    
+
     procesos.sort(key=lambda x: x["llegada"])
     
     tiempo_actual = 0  
