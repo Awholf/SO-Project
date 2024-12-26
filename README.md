@@ -25,7 +25,7 @@
    cd SO-Project
 2. **Abrir el proyecto en un IDE**
    ```bash
-   # Para VsCode y en la terminal
+   # Para VsCode en la terminal del directorio
    .code 
 3. **Crear un Entorno Virtual**
    ```bash
