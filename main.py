@@ -7,7 +7,7 @@ from funciones.validar import validar_procesos
 
 #funcion npara mostrar el menu
 def mostrar_menu():
-    print("\n=== Simulador de Planificación de Procesos en Sistemas Operativos ===")
+    print("\n=== Simulador de Planificacion de Procesos en Sistemas Operativos ===")
     print("1. FCFS")
     print("2. Round Robin")
     print("3. SJF")
@@ -17,13 +17,13 @@ def mostrar_menu():
 #funcion para entrada de datos (procesos)
 def recibir_procesos():
     procesos = []
-    n = int(input("Ingrese el número de procesos: "))
+    n = int(input("Ingrese el numero de procesos: "))
 
     for i in range(n):
         print(f"\nProceso {i + 1}:")
         id_proceso = i + 1
         llegada = int(input("Tiempo de llegada: "))
-        duracion = int(input("Duración de la ráfaga de CPU: "))
+        duracion = int(input("Duracion rafaga de CPU: "))
         procesos.append({"id": id_proceso, "llegada": llegada, "duracion": duracion})
 
     return procesos
@@ -53,11 +53,11 @@ def main():
                 #tabla de resultados
                 for tarea in planificacion:
                     print(f"Proceso {tarea['id']} - Inicio: {tarea['inicio']} - Fin: {tarea['fin']}")
-                print(f"\nTiempo promedio de finalización: {tiempo_promedio:.2f}")
+                print(f"\nTiempo promedio de finalizacion: {tiempo_promedio:.2f}")
                 
                 #promedios
                 metricas = calcular_metricas(planificacion, procesos)
-                print("\nMétricas de rendimiento:")
+                print("\nMtricas de rendimiento:")
                 print(f"Tiempo promedio de retorno: {metricas['retorno_promedio']:.2f}")
                 print(f"Tiempo promedio de espera: {metricas['espera_promedio']:.2f}")
                 print(f"Tiempo promedio de respuesta: {metricas['respuesta_promedio']:.2f}")
@@ -67,12 +67,12 @@ def main():
             elif opcion == 4: 
                 break
             else:
-                print("\nOpción no válida.")
+                print("\nNo valido.")
 
         except ValueError as e:
             print(f"\nError: {e}")
         except Exception as e:
-            print(f"\nOcurrió un error inesperado: {e}")
+            print(f"\nOcurrio un error inesperado: {e}")
 
 if __name__ == "__main__":
     main()
