@@ -57,7 +57,7 @@ def main():
                 
                 #promedios
                 metricas = calcular_metricas(planificacion, procesos)
-                print("\nMtricas de rendimiento:")
+                print("\nMetricas de rendimiento:")
                 print(f"Tiempo promedio de retorno: {metricas['retorno_promedio']:.2f}")
                 print(f"Tiempo promedio de espera: {metricas['espera_promedio']:.2f}")
                 print(f"Tiempo promedio de respuesta: {metricas['respuesta_promedio']:.2f}")
