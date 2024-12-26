@@ -1,11 +1,9 @@
 def algoritmo_fcfs(procesos):
-    """
-    Algoritmo FCFS simplificado, mantiene id, inicio, y fin.
-    :param procesos: Lista de procesos con 'id', 'llegada', y 'duracion'.
-    :return: Lista de planificacion con tiempos de inicio y fin, y tiempo promedio de finalización.
-    """
-    procesos.sort(key=lambda x: x["llegada"])  # Ordenar por tiempo de llegada
-    tiempo_actual = 0
+    #https://gist.github.com/fitorec/57344289af3d2da8a7a255f2448d26b1
+    
+    procesos.sort(key=lambda x: x["llegada"])
+    
+    tiempo_actual = 0  
     planificacion = []
 
     for proceso in procesos:
@@ -15,4 +13,5 @@ def algoritmo_fcfs(procesos):
         tiempo_actual = tiempo_fin
 
     tiempo_promedio = sum(tarea["fin"] for tarea in planificacion) / len(procesos)
+    
     return planificacion, tiempo_promedio
