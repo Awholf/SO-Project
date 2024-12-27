@@ -1,32 +1,32 @@
 def calcular_metricas(planificacion, procesos):
-    """
-    Calcula métricas de rendimiento: retorno promedio, espera promedio y respuesta promedio.
-    :param planificacion: Lista de planificación con 'id', 'inicio' y 'fin'.
-    :param procesos: Lista de procesos con 'id', 'llegada' y 'duracion'.
-    :return: Diccionario con métricas calculadas.
-    """
-    if not planificacion or not procesos:
-        raise ValueError("La planificación o la lista de procesos está vacía.")
 
+    if not planificacion:
+        raise ValueError("La planificación está vacía. No se pueden calcular métricas.")
+    if not procesos:
+        raise ValueError("La lista de procesos está vacía. No se pueden calcular métricas.")
+
+    # Inicializar listas para métricas
     tiempos_retorno = []
     tiempos_espera = []
     tiempos_respuesta = []
 
     for proceso in procesos:
-        # Filtrar las tareas relacionadas con el proceso actual
+        # Obtener las tareas relacionadas con el proceso actual
         tareas = [tarea for tarea in planificacion if tarea["id"] == proceso["id"]]
         if not tareas:
-            continue
+            continue  # Saltar procesos sin planificación
 
-        # Calcular tiempos de finalización, retorno, espera y respuesta
-        tiempo_finalizacion = tareas[-1]["fin"]
+        # Calcular métricas para el proceso actual
+        tiempo_finalizacion = max(tarea["fin"] for tarea in tareas)
+        tiempo_inicio = min(tarea["inicio"] for tarea in tareas)
+
         tiempo_retorno = tiempo_finalizacion - proceso["llegada"]
-        tiempos_retorno.append(tiempo_retorno)
-
         tiempo_espera = tiempo_retorno - proceso["duracion"]
-        tiempos_espera.append(tiempo_espera)
+        tiempo_respuesta = tiempo_inicio - proceso["llegada"]
 
-        tiempo_respuesta = tareas[0]["inicio"] - proceso["llegada"]
+        # Agregar a las listas
+        tiempos_retorno.append(tiempo_retorno)
+        tiempos_espera.append(tiempo_espera)
         tiempos_respuesta.append(tiempo_respuesta)
 
     # Calcular promedios
@@ -34,8 +34,8 @@ def calcular_metricas(planificacion, procesos):
     espera_promedio = sum(tiempos_espera) / len(tiempos_espera) if tiempos_espera else 0
     respuesta_promedio = sum(tiempos_respuesta) / len(tiempos_respuesta) if tiempos_respuesta else 0
 
-    return {
-        "retorno_promedio": retorno_promedio,
-        "espera_promedio": espera_promedio,
-        "respuesta_promedio": respuesta_promedio
-    }
+    # Mostrar métricas
+    print("\nMetricas de rendimiento:")
+    print(f"Tiempo promedio de retorno: {retorno_promedio:.2f}")
+    print(f"Tiempo promedio de espera: {espera_promedio:.2f}")
+    print(f"Tiempo promedio de respuesta: {respuesta_promedio:.2f}")
